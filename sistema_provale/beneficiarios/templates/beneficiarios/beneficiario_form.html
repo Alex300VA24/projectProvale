@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load react_props %}
+
+{% block title %}{% if form_data.initial_data.id %}Editar{% else %}Nuevo{% endif %} Beneficiario{% endblock %}
+
+{% block content %}
+  <div id="beneficiario-form-root" data-props='{{ form_data|json_script }}'></div>
+{% endblock %}

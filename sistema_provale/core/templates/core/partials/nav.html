@@ -1,0 +1,132 @@
+{% load static %}
+<nav class="topnav">
+  <a class="brand" href="{% url 'core:dashboard' %}">
+    <div class="brand-icon">
+      <img class="brand-icon" src="{% static 'img/logo.png' %}" alt="Logo MDE" style="width:40px;height:40px;border-radius:14px;">
+    </div>
+    <div>
+      <div class="brand-name">PROVALE</div>
+      <div class="brand-tagline">Programa Social</div>
+    </div>
+  </a>
+
+  <div class="nav-links">
+    <div class="nav-dropdown">
+      <button class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+          <path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        Gestion Social
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="dropdown-menu">
+        <a href="{% url 'beneficiarios:index' %}" class="dropdown-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          Beneficiarios
+        </a>
+        <a href="#" class="dropdown-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <circle cx="17" cy="7" r="4"/>
+          </svg>
+          Club de Madres
+        </a>
+        <a href="#" class="dropdown-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/>
+            <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+          Reconocimientos
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown">
+      <button class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Logistica
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="dropdown-menu">
+        <a href="#" class="dropdown-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          Productos
+        </a>
+        <a href="#" class="dropdown-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 3 21 3 21 8"/>
+            <line x1="4" y1="20" x2="21" y2="3"/>
+            <polyline points="21 16 21 21 16 21"/>
+            <line x1="15" y1="15" x2="21" y2="21"/>
+          </svg>
+          Movimientos
+        </a>
+        <a href="#" class="dropdown-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          PECOSAS
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <div class="alerts-wrapper">
+      <button class="alerts-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 01-3.46 0"></path>
+        </svg>
+        <span class="alert-badge">3</span>
+      </button>
+    </div>
+
+    <div class="profile-wrapper">
+      <button class="profile-btn">
+        <div class="user-avatar">{{ user.username|first|upper }}</div>
+        <div class="user-info">
+          <div class="user-name">{{ user.username }}</div>
+          <div class="user-role-mini">{{ user.get_full_name|default:"Usuario" }}</div>
+        </div>
+      </button>
+      <div class="profile-panel">
+        <div class="panel-header">
+          <div class="panel-avatar">{{ user.username|first|upper }}</div>
+          <div class="panel-name">{{ user.username }}</div>
+          <div class="panel-role">{{ user.get_full_name|default:"Usuario" }}</div>
+        </div>
+        <div class="panel-body">
+          <a href="#" class="panel-link">Mi Perfil</a>
+          <a href="#" class="panel-link">Configuracion</a>
+        </div>
+        <div class="panel-footer">
+          <form method="post" action="{% url 'usuarios:logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout-panel">Cerrar Sesion</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

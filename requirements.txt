@@ -1,0 +1,5 @@
+django
+ipython
+mssql-django
+python-decouple
+factory_boy  

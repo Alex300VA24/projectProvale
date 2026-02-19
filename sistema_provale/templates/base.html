@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>{% block title %}PROVALE{% endblock %} — Sistema de Gestión Social</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/provale.css' %}">
+  <link rel="stylesheet" href="{% static 'dist/assets/main.css' %}">
+  {% block css %}{% endblock %}
+</head>
+<body>
+  {% include "core/partials/nav.html" %}
+
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block scripts %}{% endblock %}
+  
+  {% block react_app %}
+  <script type="module" src="{% static 'dist/main.js' %}"></script>
+  {% endblock %}
+</body>
+</html>
