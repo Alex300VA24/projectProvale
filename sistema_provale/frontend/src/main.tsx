@@ -8,6 +8,13 @@ const REACT_APPS = {
   'beneficiarios-root': () => import('@/pages/BeneficiariosApp'),
   'beneficiario-form-root': () => import('@/pages/BeneficiarioFormApp'),
   'auth-root': () => import('@/pages/AuthApp'),
+  'socios-root': () => import('@/pages/SociosApp'),
+  'club-madres-root': () => import('@/pages/ClubMadresApp'),
+  'reconocimientos-root': () => import('@/pages/ReconocimientosApp'),
+  'productos-root': () => import('@/pages/ProductosApp'),
+  'movimientos-root': () => import('@/pages/MovimientosApp'),
+  'pecosas-root': () => import('@/pages/PecosasApp'),
+  'perfil-root': () => import('@/pages/PerfilApp'),
 };
 
 function mountApps() {

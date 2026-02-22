@@ -120,3 +120,170 @@ export interface PaginatedResponse<T> {
   per_page: number;
   total_pages: number;
 }
+
+export interface Socio {
+  id: number;
+  dni: string;
+  nombre_completo: string;
+  fecha_nacimiento: string;
+  sexo: 'M' | 'F';
+  direccion: string;
+  telefono?: string;
+  email?: string;
+  estado: 'activo' | 'inactivo' | 'suspendido';
+  fecha_registro: string;
+  tipo_socio: 'ordinario' | 'honorario' | 'fundador';
+}
+
+export interface ClubMadre {
+  id: number;
+  nombre: string;
+  codigo: string;
+  direccion: string;
+  presidente: string;
+  total_integrantes: number;
+  fecha_constitucion: string;
+  estado: 'activo' | 'inactivo';
+}
+
+export interface Reconocimiento {
+  id: number;
+  beneficiario: {
+    id: number;
+    nombre_completo: string;
+    dni: string;
+  };
+  tipo_reconocimiento: 'asistencia' | 'destacado' | 'aniversario' | 'voluntario';
+  motivo: string;
+  fecha_emision: string;
+  entregado: boolean;
+}
+
+export interface Producto {
+  id: number;
+  nombre: string;
+  descripcion?: string;
+  categoria: 'alimentos' | 'higiene' | 'medicamentos' | 'utiles' | 'otro';
+  unidad_medida: string;
+  stock_actual: number;
+  stock_minimo: number;
+  precio_unitario: number;
+  estado: 'activo' | 'inactivo';
+}
+
+export interface Movimiento {
+  id: number;
+  tipo_movimiento: 'entrada' | 'salida' | 'transferencia';
+  producto: {
+    id: number;
+    nombre: string;
+  };
+  cantidad: number;
+  fecha_movimiento: string;
+  motivo: string;
+  responsable: string;
+}
+
+export interface Pecosa {
+  id: number;
+  numero_pecosa: string;
+  beneficiario: {
+    id: number;
+    nombre_completo: string;
+    dni: string;
+  };
+  club: {
+    id: number;
+    nombre: string;
+  };
+  fecha_emision: string;
+  items: {
+    producto: string;
+    cantidad: number;
+    precio_unitario: number;
+  }[];
+  estado: 'pendiente' | 'aprobada' | 'entregada' | 'cancelada';
+  total: number;
+}
+
+export interface SociosPageData {
+  user: User;
+  socios: Socio[];
+  total: number;
+  page: number;
+  per_page: number;
+  filters: {
+    search?: string;
+    estado?: string;
+    tipo_socio?: string;
+  };
+}
+
+export interface ClubMadresPageData {
+  user: User;
+  clubes: ClubMadre[];
+  total: number;
+  page: number;
+  per_page: number;
+  filters: {
+    search?: string;
+    estado?: string;
+  };
+}
+
+export interface ReconocimientosPageData {
+  user: User;
+  reconocimientos: Reconocimiento[];
+  total: number;
+  page: number;
+  per_page: number;
+  filters: {
+    search?: string;
+    tipo_reconocimiento?: string;
+    entregado?: string;
+  };
+}
+
+export interface ProductosPageData {
+  user: User;
+  productos: Producto[];
+  total: number;
+  page: number;
+  per_page: number;
+  filters: {
+    search?: string;
+    categoria?: string;
+    estado?: string;
+  };
+}
+
+export interface MovimientosPageData {
+  user: User;
+  movimientos: Movimiento[];
+  total: number;
+  page: number;
+  per_page: number;
+  filters: {
+    search?: string;
+    tipo_movimiento?: string;
+    fecha_inicio?: string;
+    fecha_fin?: string;
+  };
+}
+
+export interface PecosasPageData {
+  user: User;
+  pecosas: Pecosa[];
+  total: number;
+  page: number;
+  per_page: number;
+  filters: {
+    search?: string;
+    estado?: string;
+    club_id?: number;
+  };
+}
+
+export interface PerfilPageData {
+  user: User;
+}

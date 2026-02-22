@@ -46,17 +46,17 @@ def dashboard(request):
             ],
             'kpis': [
                 {
-                    'id': 'total_socios',
+                    'id': 'total_beneficiarios',
                     'value': '1,247',
-                    'label': 'Total Socios',
+                    'label': 'Total Beneficiarios',
                     'trend': {'direction': 'up', 'percentage': 12},
                     'variant': 'leaf',
                     'icon': 'users',
                 },
                 {
-                    'id': 'beneficiarios_activos',
+                    'id': 'socios_activos',
                     'value': '892',
-                    'label': 'Beneficiarios Activos',
+                    'label': 'Socios Activos',
                     'trend': {'direction': 'up', 'percentage': 8},
                     'variant': 'sky',
                     'icon': 'user',
@@ -70,10 +70,10 @@ def dashboard(request):
                     'icon': 'users-group',
                 },
                 {
-                    'id': 'pecosas_pendientes',
-                    'value': '12',
-                    'label': 'PECOSAS Pendientes',
-                    'trend': {'direction': 'down', 'percentage': 5},
+                    'id': 'pecosas_mes',
+                    'value': '156',
+                    'label': 'PECOSAS Este Mes',
+                    'trend': {'direction': 'up', 'percentage': 15},
                     'variant': 'clay',
                     'icon': 'file',
                 },
@@ -103,13 +103,43 @@ def dashboard(request):
                     'icon_variant': 'sky',
                     'timestamp': '2026-02-17T08:00:00',
                 },
+                {
+                    'id': 4,
+                    'type': 'producto',
+                    'title': 'Stock actualizado',
+                    'meta': 'Leche Evaporada · +100 unidades',
+                    'icon_variant': 'clay',
+                    'timestamp': '2026-02-16T15:00:00',
+                },
             ],
             'clubs': [
                 {'id': 1, 'nombre': 'Club San Luis', 'total_beneficiarios': 156, 'cobertura': 92},
                 {'id': 2, 'nombre': 'Club Primavera', 'total_beneficiarios': 134, 'cobertura': 84},
                 {'id': 3, 'nombre': 'Club Esperanza', 'total_beneficiarios': 128, 'cobertura': 91},
             ],
-            'chart_data': [60, 80, 55, 90, 70, 85, 95],
+            'chart_data': [65, 78, 82, 90, 75, 88, 95, 80, 70, 85, 92, 98],
+            'chart_labels': ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            'entregas_mes': 1247,
+            'productos_stock': 45,
+            'valor_entregas': 'S/ 45,678.00',
         }
     }
     return render(request, 'core/dashboard.html', context)
+
+
+@login_required
+def perfil(request):
+    """Vista de Mi Perfil"""
+    context = {
+        'page_data': {
+            'user': {
+                'id': request.user.id,
+                'username': request.user.username,
+                'email': request.user.email,
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'role': getattr(request.user, 'role', 'usuario'),
+            },
+        }
+    }
+    return render(request, 'core/perfil.html', context)
